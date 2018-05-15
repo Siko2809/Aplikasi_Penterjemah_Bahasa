@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        databaseAccess.open();
+
         textViewBahasa1 = (TextView)findViewById(R.id.bahasa1);
         textViewBahasa2 = (TextView)findViewById(R.id.bahasa2);
         textViewarti1 = (TextView)findViewById(R.id.arti1);
@@ -54,5 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         String input = inputText.getText().toString();
+
+
     }
 }
