@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 List<Subjek> subjekList = databaseAccess.cekSubjekBanjar(editTextkata1.getText().toString());
-               textViewarti1.setText(subjekList.size());
+               textViewarti1.setText(subjekList.size()+"");
             }
         });
         String input = inputText.getText().toString();

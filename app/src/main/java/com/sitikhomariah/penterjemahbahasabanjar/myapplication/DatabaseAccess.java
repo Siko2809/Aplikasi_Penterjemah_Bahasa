@@ -60,11 +60,14 @@ public class DatabaseAccess {
      */
     public List<Subjek> cekSubjekBanjar(String kata) {
         List<Subjek> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM SUBJEK where Banjar ="+kata.toLowerCase(), null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            list.add(new Subjek(cursor.getInt(0), cursor.getString(1), cursor.getString(2)));
-            cursor.moveToNext();
+        Cursor cursor = database.query("SUBJEK",new String[]{"Id","Banjar","Indonesia"},"Banjar=?", new String[]{kata},null,null,null,null);
+        if (cursor != null){
+            if (cursor.moveToFirst()){
+                list.add(new Subjek(cursor.getInt(cursor.getColumnIndex("Id")),
+                        cursor.getString(cursor.getColumnIndex("Banjar")),
+                        cursor.getString(cursor.getColumnIndex("Indonesia"))));
+            }
+
         }
 
         cursor.close();
@@ -73,7 +76,7 @@ public class DatabaseAccess {
 
     public List<String> cekSubjekBanjadr(String kata) {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM SUBJEK where Banjar ="+kata.toLowerCase(), null);
+        Cursor cursor = database.rawQuery("SELECT * FROM SUBJEK where Banjar ='"+kata.toLowerCase()+"'", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
