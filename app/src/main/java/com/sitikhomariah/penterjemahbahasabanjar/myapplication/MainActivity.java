@@ -8,6 +8,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sitikhomariah.penterjemahbahasabanjar.myapplication.entity.Subjek;
+
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageView image;
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
 
         textViewBahasa1 = (TextView)findViewById(R.id.bahasa1);
@@ -53,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
         imageViewpanah2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               textViewarti1.setText(editTextkata1.getText());
+                List<Subjek> subjekList = databaseAccess.cekSubjekBanjar(editTextkata1.getText().toString());
+               textViewarti1.setText(subjekList.size());
             }
         });
         String input = inputText.getText().toString();

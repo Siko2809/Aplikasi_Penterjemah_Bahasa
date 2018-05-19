@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.sitikhomariah.penterjemahbahasabanjar.myapplication.entity.Subjek;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,9 +58,22 @@ public class DatabaseAccess {
      *
      * @return a List of quotes
      */
-    public List<String> getQuotes() {
+    public List<Subjek> cekSubjekBanjar(String kata) {
+        List<Subjek> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM SUBJEK where Banjar ="+kata.toLowerCase(), null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(new Subjek(cursor.getInt(0), cursor.getString(1), cursor.getString(2)));
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return list;
+    }
+
+    public List<String> cekSubjekBanjadr(String kata) {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM penterjemah", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM SUBJEK where Banjar ="+kata.toLowerCase(), null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
