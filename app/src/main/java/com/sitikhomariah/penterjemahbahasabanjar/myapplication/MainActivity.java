@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 textViewarti1.setText(hasil);
-                System.out.println("----- "+hasil+" | "+katas.length);
+                System.out.println("----- "+hasil+" | "+katas.length+" | "+katas[0]);
             }
         });
 
