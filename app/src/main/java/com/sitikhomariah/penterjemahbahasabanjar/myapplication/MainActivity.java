@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
 //                      kata ke 1
                         List<Subjek> subjekKata1 = databaseAccess.cekSubjekIndonesia(katas[0]);
                         List<Predikat> predikatKata1 = databaseAccess.cekPredikatIndonesia(katas[0]);
+                        System.out.println(subjekKata1.size());
+                        System.out.println(predikatKata1.size());
                         if (!subjekKata1.isEmpty()) {
                             hasil = subjekKata1.get(0).getBanjar();
                         } else if (!predikatKata1.isEmpty()) {
@@ -105,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 //                        kata ke 1
                         List<Subjek> subjekKata1 = databaseAccess.cekSubjekBanjar(katas[0]);
                         List<Predikat> predikatKata1 = databaseAccess.cekPredikatBanjar(katas[0]);
+
                         if (!subjekKata1.isEmpty()) {
                             hasil = subjekKata1.get(0).getBanjar();
                         } else if (!predikatKata1.isEmpty()) {
@@ -127,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
 //                      kata ke 1
                         List<Subjek> subjekKata1 = databaseAccess.cekSubjekBanjar(katas[0]);
                         List<Predikat> predikatKata1 = databaseAccess.cekPredikatBanjar(katas[0]);
+                        System.out.println(subjekKata1.size());
+                        System.out.println(predikatKata1.size());
                         if (!subjekKata1.isEmpty()) {
                             hasil = subjekKata1.get(0).getBanjar();
                         } else if (!predikatKata1.isEmpty()) {
