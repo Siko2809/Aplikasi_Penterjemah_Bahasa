@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.sitikhomariah.penterjemahbahasabanjar.myapplication.entity.Predikat;
 import com.sitikhomariah.penterjemahbahasabanjar.myapplication.entity.Subjek;
 
 import java.util.ArrayList;
@@ -53,17 +54,62 @@ public class DatabaseAccess {
         }
     }
 
-    /**
-     * Read all quotes from the database.
-     *
-     * @return a List of quotes
-     */
+
     public List<Subjek> cekSubjekBanjar(String kata) {
         List<Subjek> list = new ArrayList<>();
         Cursor cursor = database.query("SUBJEK",new String[]{"Id","Banjar","Indonesia"},"Banjar=?", new String[]{kata},null,null,null,null);
         if (cursor != null){
             if (cursor.moveToFirst()){
                 list.add(new Subjek(cursor.getInt(cursor.getColumnIndex("Id")),
+                        cursor.getString(cursor.getColumnIndex("Banjar")),
+                        cursor.getString(cursor.getColumnIndex("Indonesia"))));
+            }
+
+        }
+
+        cursor.close();
+        return list;
+    }
+
+
+    public List<Predikat> cekPredikatBanjar(String kata) {
+        List<Predikat> list = new ArrayList<>();
+        Cursor cursor = database.query("PREDIKAT",new String[]{"Id","Banjar","Indonesia"},"Banjar=?", new String[]{kata},null,null,null,null);
+        if (cursor != null){
+            if (cursor.moveToFirst()){
+                list.add(new Predikat(cursor.getInt(cursor.getColumnIndex("Id")),
+                        cursor.getString(cursor.getColumnIndex("Banjar")),
+                        cursor.getString(cursor.getColumnIndex("Indonesia"))));
+            }
+
+        }
+
+        cursor.close();
+        return list;
+    }
+
+    public List<Subjek> cekSubjekIndonesia(String kata) {
+        List<Subjek> list = new ArrayList<>();
+        Cursor cursor = database.query("SUBJEK",new String[]{"Id","Banjar","Indonesia"},"Indonesia=?", new String[]{kata},null,null,null,null);
+        if (cursor != null){
+            if (cursor.moveToFirst()){
+                list.add(new Subjek(cursor.getInt(cursor.getColumnIndex("Id")),
+                        cursor.getString(cursor.getColumnIndex("Banjar")),
+                        cursor.getString(cursor.getColumnIndex("Indonesia"))));
+            }
+
+        }
+
+        cursor.close();
+        return list;
+    }
+
+    public List<Predikat> cekPredikatIndonesia(String kata) {
+        List<Predikat> list = new ArrayList<>();
+        Cursor cursor = database.query("PREDIKAT",new String[]{"Id","Banjar","Indonesia"},"Indonesia=?", new String[]{kata},null,null,null,null);
+        if (cursor != null){
+            if (cursor.moveToFirst()){
+                list.add(new Predikat(cursor.getInt(cursor.getColumnIndex("Id")),
                         cursor.getString(cursor.getColumnIndex("Banjar")),
                         cursor.getString(cursor.getColumnIndex("Indonesia"))));
             }
