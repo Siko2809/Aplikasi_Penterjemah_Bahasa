@@ -1,5 +1,6 @@
 package com.sitikhomariah.penterjemahbahasabanjar.myapplication;
 
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,11 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sitikhomariah.penterjemahbahasabanjar.myapplication.entity.Predikat;
 import com.sitikhomariah.penterjemahbahasabanjar.myapplication.entity.Subjek;
 
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageViewpanah1;
     private ImageView imageViewpanah2;
     private ImageView imageViewsuara;
+    TextToSpeech toSpeech;
+    int result;
+    String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +59,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        toSpeech = new TextToSpeech(MainActivity.this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    result = toSpeech.setLanguage(Locale.US);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Feature not supported in your device", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
+        imageViewsuara.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Toast.makeText(getApplicationContext(), "Feature not supported in your device", Toast.LENGTH_SHORT).show();
+                    } else {
+                        text = textViewarti1.getText().toString();
+                        toSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                    }
+
+                }
+            });
         final EditText inputText = (EditText) findViewById(R.id.kata1);
         imageViewpanah2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,9 +137,9 @@ public class MainActivity extends AppCompatActivity {
                         List<Predikat> predikatKata1 = databaseAccess.cekPredikatBanjar(katas[0]);
 
                         if (!subjekKata1.isEmpty()) {
-                            hasil = subjekKata1.get(0).getBanjar();
+                            hasil = subjekKata1.get(0).getIndonesia();
                         } else if (!predikatKata1.isEmpty()) {
-                            hasil = predikatKata1.get(0).getBanjar();
+                            hasil = predikatKata1.get(0).getIndonesia();
                         }
 
 
@@ -119,9 +147,9 @@ public class MainActivity extends AppCompatActivity {
                         List<Subjek> subjekKata2 = databaseAccess.cekSubjekBanjar(katas[1]);
                         List<Predikat> predikatKata2 = databaseAccess.cekPredikatBanjar(katas[1]);
                         if (!subjekKata2.isEmpty()) {
-                            hasil = hasil + " " + subjekKata2.get(0).getBanjar();
+                            hasil = hasil + " " + subjekKata2.get(0).getIndonesia();
                         } else if (!predikatKata2.isEmpty()) {
-                            hasil = hasil + " " + predikatKata2.get(0).getBanjar();
+                            hasil = hasil + " " + predikatKata2.get(0).getIndonesia();
                         }
 
 
@@ -133,9 +161,9 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println(subjekKata1.size());
                         System.out.println(predikatKata1.size());
                         if (!subjekKata1.isEmpty()) {
-                            hasil = subjekKata1.get(0).getBanjar();
+                            hasil = subjekKata1.get(0).getIndonesia();
                         } else if (!predikatKata1.isEmpty()) {
-                            hasil = predikatKata1.get(0).getBanjar();
+                            hasil = predikatKata1.get(0).getIndonesia();
                         }
 
 
