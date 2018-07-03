@@ -85,4 +85,16 @@
         android:id="@+id/panah1"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tambah"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/editText"
+        android:layout_marginBottom="150dp"
+        android:background="@android:color/background_light"
+        android:text="Tambah Kata"
+        android:textSize="16sp" />
+
 </RelativeLayout>

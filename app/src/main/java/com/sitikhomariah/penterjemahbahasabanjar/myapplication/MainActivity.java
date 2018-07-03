@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageViewpanah1;
     private ImageView imageViewpanah2;
     private ImageView imageViewsuara;
+    private TextView textViewTambahKata;
     TextToSpeech toSpeech;
     int result;
     String text;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         imageViewpanah1 = (ImageView) findViewById(R.id.panah1);
         imageViewpanah2 = (ImageView) findViewById(R.id.panah2);
         imageViewsuara = (ImageView) findViewById(R.id.suara);
+        textViewTambahKata = (TextView) findViewById(R.id.tambah);
 
         imageViewpanah1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,4 +181,6 @@ public class MainActivity extends AppCompatActivity {
 
         String input = inputText.getText().toString();
     }
-}
+    }
+
+
