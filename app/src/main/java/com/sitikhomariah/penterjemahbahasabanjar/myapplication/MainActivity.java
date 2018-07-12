@@ -1,5 +1,6 @@
 package com.sitikhomariah.penterjemahbahasabanjar.myapplication;
 
+import android.content.Intent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageViewpanah1;
     private ImageView imageViewpanah2;
     private ImageView imageViewsuara;
-    private TextView textViewTambahKata;
+    private Button buttontambah;
     TextToSpeech toSpeech;
     int result;
     String text;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         imageViewpanah1 = (ImageView) findViewById(R.id.panah1);
         imageViewpanah2 = (ImageView) findViewById(R.id.panah2);
         imageViewsuara = (ImageView) findViewById(R.id.suara);
-        textViewTambahKata = (TextView) findViewById(R.id.tambah);
+
 
         imageViewpanah1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,6 +181,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         String input = inputText.getText().toString();
+
+        buttontambah = (Button)findViewById(R.id.tambah);
+        buttontambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(MainActivity.this, Tambah.class);
+                startActivity(intent);
+            }
+        });
+
     }
     }
 

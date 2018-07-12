@@ -5,96 +5,95 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.sitikhomariah.penterjemahbahasabanjar.myapplication.MainActivity"
-    android:background="@android:color/darker_gray">
+    tools:context="com.sitikhomariah.penterjemahbahasabanjar.myapplication.MainActivity">
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="57dp"
-        android:id="@+id/editText" />
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <TextView
-        android:text="Banjar"
+        android:id="@+id/bahasa2"
         android:layout_width="75dp"
         android:layout_height="20dp"
         android:layout_alignBottom="@+id/bahasa1"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="36dp"
-        android:id="@+id/bahasa2"
-        android:textSize="18sp"
-        android:background="@android:color/background_light" />
+        android:background="@android:color/background_light"
+        android:text="Banjar"
+        android:textSize="18sp" />
 
     <TextView
-        android:text="Indonesia"
         android:id="@+id/bahasa1"
-        android:layout_marginStart="24dp"
-        android:layout_height="20dp"
         android:layout_width="75dp"
-        android:layout_alignParentTop="true"
+        android:layout_height="20dp"
         android:layout_alignParentStart="true"
-        android:textSize="18sp"
-        android:background="@android:color/background_light" />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:background="@android:color/background_light"
+        android:text="Indonesia"
+        android:textSize="18sp" />
 
     <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:srcCompat="@drawable/panah2"
         android:id="@+id/panah2"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentEnd="true" />
-
-    <ImageView
         android:layout_width="20dp"
         android:layout_height="20dp"
-        app:srcCompat="@drawable/suara"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/editText"
+        app:srcCompat="@drawable/panah2" />
+
+    <ImageView
         android:id="@+id/suara"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true" />
+        app:srcCompat="@drawable/suara" />
 
     <EditText
+        android:id="@+id/kata1"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/kata1"
-        android:background="@android:color/background_light"
+        android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/editText"
-        android:layout_alignParentStart="true" />
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <TextView
+        android:id="@+id/arti1"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:id="@+id/arti1"
-        android:background="@android:color/background_light"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:background="@android:color/background_light" />
 
     <ImageView
+        android:id="@+id/panah1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/panah"
-        android:id="@+id/panah1"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/panah" />
 
-    <TextView
+    <Button
         android:id="@+id/tambah"
-        android:layout_width="120dp"
-        android:layout_height="25dp"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_alignEnd="@+id/bahasa1"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/editText"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="122dp"
         android:background="@android:color/background_light"
-        android:text="Tambah Kata"
-        android:textSize="16sp" />
+        android:text="Tambah Kata" />
 
 </RelativeLayout>

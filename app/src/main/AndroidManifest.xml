@@ -15,6 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Tambah" />
+        <activity android:name=".Tambah1" />
+        <activity android:name=".Tambah2"></activity>
     </application>
 
 </manifest>
