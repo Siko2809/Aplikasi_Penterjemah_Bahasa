@@ -57,9 +57,9 @@ public class DatabaseAccess {
 
     public List<Subjek> cekSubjekBanjar(String kata) {
         List<Subjek> list = new ArrayList<>();
-        Cursor cursor = database.query("SUBJEK",new String[]{"Id","Banjar","Indonesia"},"Banjar=?", new String[]{kata},null,null,null,null);
-        if (cursor != null){
-            if (cursor.moveToFirst()){
+        Cursor cursor = database.query("SUBJEK", new String[]{"Id", "Banjar", "Indonesia"}, "Banjar=?", new String[]{kata}, null, null, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
                 list.add(new Subjek(cursor.getInt(cursor.getColumnIndex("Id")),
                         cursor.getString(cursor.getColumnIndex("Banjar")),
                         cursor.getString(cursor.getColumnIndex("Indonesia"))));
@@ -74,9 +74,9 @@ public class DatabaseAccess {
 
     public List<Predikat> cekPredikatBanjar(String kata) {
         List<Predikat> list = new ArrayList<>();
-        Cursor cursor = database.query("PREDIKAT",new String[]{"Id","Banjar","Indonesia"},"Banjar=?", new String[]{kata},null,null,null,null);
-        if (cursor != null){
-            if (cursor.moveToFirst()){
+        Cursor cursor = database.query("PREDIKAT", new String[]{"Id", "Banjar", "Indonesia"}, "Banjar=?", new String[]{kata}, null, null, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
                 list.add(new Predikat(cursor.getInt(cursor.getColumnIndex("Id")),
                         cursor.getString(cursor.getColumnIndex("Banjar")),
                         cursor.getString(cursor.getColumnIndex("Indonesia"))));
@@ -90,9 +90,9 @@ public class DatabaseAccess {
 
     public List<Subjek> cekSubjekIndonesia(String kata) {
         List<Subjek> list = new ArrayList<>();
-        Cursor cursor = database.query("SUBJEK",new String[]{"Id","Banjar","Indonesia"},"Indonesia=?", new String[]{kata},null,null,null,null);
-        if (cursor != null){
-            if (cursor.moveToFirst()){
+        Cursor cursor = database.query("SUBJEK", new String[]{"Id", "Banjar", "Indonesia"}, "Indonesia=?", new String[]{kata}, null, null, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
                 list.add(new Subjek(cursor.getInt(cursor.getColumnIndex("Id")),
                         cursor.getString(cursor.getColumnIndex("Banjar")),
                         cursor.getString(cursor.getColumnIndex("Indonesia"))));
@@ -106,9 +106,9 @@ public class DatabaseAccess {
 
     public List<Predikat> cekPredikatIndonesia(String kata) {
         List<Predikat> list = new ArrayList<>();
-        Cursor cursor = database.query("PREDIKAT",new String[]{"Id","Banjar","Indonesia"},"Indonesia=?", new String[]{kata},null,null,null,null);
-        if (cursor != null){
-            if (cursor.moveToFirst()){
+        Cursor cursor = database.query("PREDIKAT", new String[]{"Id", "Banjar", "Indonesia"}, "Indonesia=?", new String[]{kata}, null, null, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
                 list.add(new Predikat(cursor.getInt(cursor.getColumnIndex("Id")),
                         cursor.getString(cursor.getColumnIndex("Banjar")),
                         cursor.getString(cursor.getColumnIndex("Indonesia"))));
@@ -122,7 +122,7 @@ public class DatabaseAccess {
 
     public List<String> cekSubjekBanjadr(String kata) {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM SUBJEK where Banjar ='"+kata.toLowerCase()+"'", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM SUBJEK where Banjar ='" + kata.toLowerCase() + "'", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
@@ -130,5 +130,25 @@ public class DatabaseAccess {
         }
         cursor.close();
         return list;
+    }
+
+    public boolean insertSubjek(Subjek subjek) {
+        String sql = "INSERT INTO SUBJEK('Banjar','Indonesia')VALUES(?,?)";
+        Cursor cursor = database.rawQuery(sql, new String[]{subjek.getBanjar(), subjek.getIndonesia()});
+        if (cursor.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean insertPredikat(Predikat predikat) {
+        String sql = "INSERT INTO PREDIKAT('Banjar','Indonesia')VALUES(?,?)";
+        Cursor cursor = database.rawQuery(sql, new String[]{predikat.getBanjar(), predikat.getIndonesia()});
+        if (cursor.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
