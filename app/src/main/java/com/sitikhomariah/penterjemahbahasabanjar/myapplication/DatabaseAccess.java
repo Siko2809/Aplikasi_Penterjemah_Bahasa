@@ -131,5 +131,24 @@ public class DatabaseAccess {
         cursor.close();
         return list;
     }
+
+    public boolean insertSubjek(Subjek subjek) {
+        String sql = "INSERT INTO SUBJEK('Banjar','Indonesia')VALUES(?,?)";
+        Cursor cursor = database.rawQuery(sql, new String[]{subjek.getBanjar(), subjek.getIndonesia()});
+        if (cursor.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    public boolean insertPredikat(Predikat predikat) {
+        String sql = "INSERT INTO PREDIKAT('Banjar','Indonesia')VALUES(?,?)";
+        Cursor cursor = database.rawQuery(sql, new String[]{predikat.getBanjar(), predikat.getIndonesia()});
+        if (cursor.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
