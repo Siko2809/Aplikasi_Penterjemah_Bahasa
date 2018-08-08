@@ -14,6 +14,10 @@ import java.util.List;
 public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase database;
+
+    public static String sqlSubjek = "INSERT INTO SUBJEK('Banjar','Indonesia')VALUES('kayapu','kayapu')";
+    public static String sqlPredikat = "INSERT INTO PREDIKAT('Banjar','Indonesia')VALUES('kalem','kalem')";
+
     private static DatabaseAccess instance;
 
     /**
@@ -95,11 +99,11 @@ public class DatabaseAccess {
             if (cursor.moveToFirst()) {
                 list.add(new Subjek(cursor.getInt(cursor.getColumnIndex("Id")),
                         cursor.getString(cursor.getColumnIndex("Banjar")),
-                        cursor.getString(cursor.getColumnIndex("Indonesia"))));
+                        cursor.getString(cursor.getColumnIndex("Indonesia"))
+                     ));
             }
 
         }
-
         cursor.close();
         return list;
     }
@@ -132,23 +136,23 @@ public class DatabaseAccess {
         return list;
     }
 
-    public boolean insertSubjek(Subjek subjek) {
-        String sql = "INSERT INTO SUBJEK('Banjar','Indonesia')VALUES(?,?)";
-        Cursor cursor = database.rawQuery(sql, new String[]{subjek.getBanjar(), subjek.getIndonesia()});
+    public boolean insertSubjek () {
+
+        Cursor cursor = database.rawQuery(sqlSubjek, new String[]{});
         if (cursor.moveToFirst()) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
-    public boolean insertPredikat(Predikat predikat) {
-        String sql = "INSERT INTO PREDIKAT('Banjar','Indonesia')VALUES(?,?)";
-        Cursor cursor = database.rawQuery(sql, new String[]{predikat.getBanjar(), predikat.getIndonesia()});
+    public boolean insertPredikat() {
+
+        Cursor cursor = database.rawQuery(sqlPredikat, new String[] {});
         if (cursor.moveToFirst()) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 }

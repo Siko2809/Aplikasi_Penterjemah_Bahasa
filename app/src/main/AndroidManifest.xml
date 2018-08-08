@@ -8,16 +8,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Main2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Tambah" />
-        <activity android:name=".Tambah1" />
-        <activity android:name=".Tambah2"></activity>
+        <activity android:name=".TentangActivity" />
+        <activity android:name=".HalamanUtama2Activity" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

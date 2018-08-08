@@ -6,7 +6,7 @@ public class Subjek {
     private String Banjar;
     private String Indonesia;
 
-    public Subjek() {
+    public Subjek(int id, String banjar, String indonesia, String res_banjar, String res_indonesia) {
     }
 
     public Subjek(int id, String banjar, String indonesia) {

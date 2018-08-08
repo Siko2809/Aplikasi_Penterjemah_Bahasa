@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TentangActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"
+        android:text="          Bahasa Banjar merupakan bahasa daerah Kalimantan Selatan yang digunakan masyarakat dalam percakapan kehidupan sehari-hari. Bahasa Banjar adalah sebuah bahasa yang dituturkan oleh orang Banjar di Provinsi Kalimantan Selatan.                 Hasil dari penelitian ini adalah aplikasi terjemahan Bahasa Indonesia ke Bahasa Banjar disertai Analisis sintaksis, yang digunakan untuk membantu para pendatang di Banjar untuk belajar mengerti Bahasa Banjar dengan baik dan benar.                                             Sintaksis adalah studi kebahasaan yang membahas struktur kalimat suatu bahasa secara gramatis. . Struktur fungsional kalimat ditentukan oleh hubungan fungsi gatra gatra kalimat. Masing-masing adalah subjek (s), predikat (p)."
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+</RelativeLayout>
