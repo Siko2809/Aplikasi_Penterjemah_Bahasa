@@ -26,7 +26,6 @@ public class HalamanUtama2Activity extends AppCompatActivity {
     private TextView textViewBahasa2;
     private TextView textViewarti1;
     private EditText editTextkata1;
-    private TextView textViewtampil;
     private ImageView imageViewpanah1;
     private ImageView imageViewpanah2;
     private ImageView imageViewsuara;
@@ -48,7 +47,6 @@ public class HalamanUtama2Activity extends AppCompatActivity {
         textViewBahasa2 = (TextView) findViewById(R.id.bahasa2);
         textViewarti1 = (TextView) findViewById(R.id.arti1);
         editTextkata1 = (EditText) findViewById(R.id.kata1);
-        textViewtampil = (TextView)findViewById(R.id.tampil);
         imageViewpanah1 = (ImageView) findViewById(R.id.panah1);
         imageViewpanah2 = (ImageView) findViewById(R.id.panah2);
         imageViewsuara = (ImageView) findViewById(R.id.suara);
@@ -82,8 +80,6 @@ public class HalamanUtama2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String hasil = "";
-                String hasil1 = "tidak diketemukan";
-                String hasil2 = "";
                 String[] katas = editTextkata1.getText().toString().split(" ");
 
 
@@ -95,10 +91,8 @@ public class HalamanUtama2Activity extends AppCompatActivity {
                         List<Predikat> predikatKata1 = databaseAccess.cekPredikatIndonesia(katas[0]);
                         if (!subjekKata1.isEmpty()) {
                                 hasil = subjekKata1.get(0).getBanjar();
-                           // hasil2 = hasil + " " + hasil1;
                         } else if (!predikatKata1.isEmpty()) {
-                           hasil = hasil1;
-                            //hasil2 = hasil1;
+                           hasil = predikatKata1.get(0).getBanjar();
                         }
 
 //                        kata ke 2
@@ -167,7 +161,6 @@ public class HalamanUtama2Activity extends AppCompatActivity {
                 }
 
                 textViewarti1.setText(hasil);
-                textViewtampil.setText(hasil2);
                 nada = getResources().getIdentifier(hasil,
                         "raw", getPackageName());
                 System.out.println("----- "+hasil+" | "+katas.length+" | "+katas[0]);
